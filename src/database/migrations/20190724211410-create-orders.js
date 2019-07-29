@@ -8,19 +8,33 @@ module.exports = {
         primaryKey: true,
       },
       name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      amount: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
       price: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
-      status: {
-        type: Sequelize.BOOLEAN,
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'users', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
         allowNull: false,
       },
       take_by: {
         type: Sequelize.INTEGER,
+        references: { model: 'users', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        allowNull: true,
+      },
+      status: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       created_at: {
