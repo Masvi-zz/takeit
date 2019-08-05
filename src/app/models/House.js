@@ -5,6 +5,7 @@ class House extends Model {
     super.init(
       {
         name: Sequelize.STRING,
+        user_id: Sequelize.INTEGER,
       },
       {
         sequelize,

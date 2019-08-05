@@ -24,6 +24,18 @@ class OrderController {
     });
     return res.json(order);
   }
+
+  async update(req, res) {
+    /*
+     const schema = Yup.object().shape({
+       name: Yup.string().required(),
+       status: Yup.string().required(),
+       amount: Yup.number().required(),
+       user_id: Yup.number().required(),
+     }); */
+
+    return res.json();
+  }
 }
 
 export default new OrderController();
