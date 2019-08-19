@@ -13,7 +13,6 @@ class HouseController {
 
     const { name } = req.body;
     const user_id = req.userId;
-    console.log(user_id);
 
     const house = await House.create({
       name,

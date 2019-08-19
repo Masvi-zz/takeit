@@ -19,6 +19,15 @@ class User extends Model {
         user.password_hash = await bcrypt.hash(user.password, 8);
       }
     });
+
+    User.associate = models => {
+      this.belongsTo(models.House, {
+        through: 'house_user',
+        as: 'houseuser',
+        foreignKey: 'home_id',
+      });
+    };
+
     return this;
   }
 

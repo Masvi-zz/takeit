@@ -2,6 +2,18 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
+  async index(req, res) {
+    const { page = 1 } = req.query;
+
+    const users = await User.findAll({
+      attributes: ['id', 'name', 'email'],
+      limit: 20,
+      offset: (page - 1) * 20,
+    });
+    console.log(users);
+    return res.json(users);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -33,6 +45,14 @@ class UserController {
   }
 
   async update(req, res) {
+    return res.json({ ok: true });
+  }
+
+  async delete(req, res) {
+    console.log(`ACHOU: ${req.params.id}`);
+    const user = await User.findByPk(req.params.id);
+    const result = await User.destroy([user]);
+    console.log(result);
     return res.json({ ok: true });
   }
 }
